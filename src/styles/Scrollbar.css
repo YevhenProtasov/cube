@@ -1,0 +1,35 @@
+@import './Variables.css';
+
+/* Стилізація основної смуги прокручування */
+::-webkit-scrollbar {
+  width: 12px; /* Ширина вертикального скролбару */
+  height: 12px; /* Висота горизонтального скролбару */
+}
+
+/* Стилізація фону скролбару */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Колір фону */
+  border-radius: 10px;
+}
+
+/* Стилізація самого повзунка скролбару */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Колір повзунка */
+  border-radius: 10px;
+  transition: background 0.3s ease; /* Плавна зміна кольору */
+}
+
+/* Стилізація повзунка при ховері */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-primary); /* Колір повзунка при наведенні */
+}
+
+/* Стилізація для горизонтального скролбару */
+::-webkit-scrollbar-horizontal {
+  height: 8px;
+}
+
+/* Стилізація для вертикального скролбару */
+::-webkit-scrollbar-vertical {
+  width: 8px;
+}

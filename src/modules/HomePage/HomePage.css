@@ -1,0 +1,128 @@
+/* #region Hero section */
+.hero {
+  padding-top: 156px;
+  margin-bottom: 62px;
+}
+/* @media (min-width: 500px) {
+  .hero {
+    padding-top: 156px;
+    margin-bottom: 62px;
+  }
+} */
+.hero__wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.hero__image {
+  grid-column: 2 span;
+}
+.hero__image img {
+  width: 100%;
+  max-width: fit-content;
+  display: flex;
+  padding-right: 58px;
+  margin-left: auto;
+}
+.hero__typography {
+  grid-column: 1 span;
+}
+.hero__title {
+  position: relative;
+  width: min-content;
+  font-size: 128px;
+  font-weight: 400;
+}
+.hero__subtitle {
+  font-size: 40px;
+  font-weight: 400;
+  text-align: right;
+}
+/* #endregion */
+
+/* #region About section */
+.about {
+  margin-bottom: 162px;
+}
+.about__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.about__line {
+  grid-column: 2 span;
+  display: flex;
+  justify-content: flex-end;
+}
+.about__typography {
+  grid-column: 2 span;
+}
+.about__typography p {
+  max-width: 65%;
+}
+/* #endregion */
+
+/* #region Step Position */
+.step {
+  padding-top: 94px;
+  margin-bottom: 240px;
+}
+.step__wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.step__image {
+  grid-column: 1 span;
+}
+.step__typography {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.steps > div:nth-child(4n + 1) .step__typography {
+  grid-column: 2 / 3;
+}
+.steps > div:nth-child(4n + 2) .step__typography,
+.steps > div:nth-child(4n + 4) .step__typography {
+  grid-column: 3 / 4;
+}
+.steps > div:nth-child(4n + 3) .step__typography {
+  grid-column: 4 / 5;
+}
+.steps > div:nth-child(4n + 1) .step__image {
+  grid-column: 1 / 2;
+}
+.steps > div:nth-child(4n + 2) .step__image,
+.steps > div:nth-child(4n + 4) .step__image {
+  grid-column: 2 / 3;
+}
+.steps > div:nth-child(4n + 3) .step__image {
+  grid-column: 3 / 4;
+}
+.steps > div:nth-child(4n + 1) .step__image {
+  transform: rotate(0deg);
+}
+.steps > div:nth-child(4n + 2) .step__image {
+  transform: rotate(90deg);
+}
+.steps > div:nth-child(4n + 3) .step__image {
+  transform: rotate(180deg);
+}
+.steps > div:nth-child(4n + 4) .step__image {
+  transform: rotate(270deg);
+}
+.step__title {
+  font-size: 128px;
+  font-weight: 400;
+  line-height: 1;
+  margin-top: -25px;
+}
+.step__subtitle {
+  font-size: 40px;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-end;
+}
+/* #endregion */
