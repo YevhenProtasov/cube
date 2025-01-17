@@ -4,12 +4,18 @@ import heroLogo from '../../assets/image/logo_mirror--large.png';
 import line from '../../assets/image/line.png';
 import square from '../../assets/image/square.png';
 import shadow from '../../assets/image/shadow.png';
-import './HomePage.css';
+import './HomePage.scss';
 import { StepSection } from './components/StepSection';
+import { Header } from '../../shared/components/Header';
 
 export const HomePage = () => {
   return (
     <>
+      <Header
+        linkTo='/about-us'
+        title='About the Project: The Meditation Cube'
+      />
+
       <main className='main'>
         <section className='hero'>
           <div className='container'>
@@ -48,6 +54,7 @@ export const HomePage = () => {
             title='Position'
             subtitle='Face 1'
             description='Sit up straight, feel the stability'
+            linkTo='/position'
           />
 
           <StepSection
@@ -55,6 +62,7 @@ export const HomePage = () => {
             title='Eyes'
             subtitle='Face 2'
             description='Keep your eyes open, gaze downward'
+            linkTo='/eyes'
           />
 
           <StepSection
@@ -62,6 +70,7 @@ export const HomePage = () => {
             title='Breathing'
             subtitle='Face 3'
             description='Follow your breath, stay in the present'
+            linkTo='/breathing'
           />
 
           <StepSection
@@ -69,6 +78,7 @@ export const HomePage = () => {
             title='Mind'
             subtitle='Face 4'
             description='Observe your thoughts, return to the breath'
+            linkTo='/mind'
           />
 
           <StepSection
@@ -76,6 +86,7 @@ export const HomePage = () => {
             title='Time'
             subtitle='Face 5'
             description='Start with 5 minutes, focus on the moment'
+            linkTo='/time'
           />
 
           <StepSection
@@ -83,6 +94,7 @@ export const HomePage = () => {
             title='End'
             subtitle='Face 6'
             description='Slowly return to your daily life'
+            linkTo='/end'
           />
         </section>
 
@@ -92,6 +104,38 @@ export const HomePage = () => {
               <div className='footer__image'>
                 <img src={shadow} />
               </div>
+              <ul className='footer__links'>
+                <li>
+                  <a href='#' className='footer__link' target='_blank'>
+                    <span className='icon icon--instagram'></span>
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='footer__link' target='_blank'>
+                    <span className='icon icon--facebook'></span>
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='footer__link' target='_blank'>
+                    <span className='icon icon--youtube'></span>
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='footer__link' target='_blank'>
+                    <span className='icon icon--linkedin'></span>
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='footer__link' target='_blank'>
+                    <span className='icon icon--telegram'></span>
+                  </a>
+                </li>
+                <li>
+                  <a href='#' className='footer__link' target='_blank'>
+                    <span className='icon icon--pinterest'></span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </footer>

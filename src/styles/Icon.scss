@@ -1,0 +1,43 @@
+@import './Variables.css';
+
+.icon {
+  display: block;
+  width: 44px;
+  height: 44px;
+  background-color: var(--c-primary);
+
+  &--instagram {
+    mask-image: url('../assets/icon/icon-instagram.svg');
+  }
+
+  &--facebook {
+    mask-image: url('../assets/icon/icon-facebook.svg');
+  }
+
+  &--youtube {
+    mask-image: url('../assets/icon/icon-youtube.svg');
+  }
+
+  &--linkedin {
+    mask-image: url('../assets/icon/icon-linkedin.svg');
+  }
+
+  &--telegram {
+    mask-image: url('../assets/icon/icon-telegram.svg');
+  }
+
+  &--pinterest {
+    mask-image: url('../assets/icon/icon-pinterest.svg');
+  }
+
+  &--instagram,
+  &--facebook,
+  &--youtube,
+  &--linkedin,
+  &--telegram,
+  &--pinterest {
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+  }
+}

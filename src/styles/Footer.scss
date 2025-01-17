@@ -1,0 +1,36 @@
+.footer {
+  margin-bottom: 32px;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  &__image {
+    grid-column: 2 / 3;
+
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__links {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 106px;
+    height: 106px;
+    background-color: var(--c-primary);
+
+    & .icon {
+      background-color: #fff;
+    }
+  }
+}

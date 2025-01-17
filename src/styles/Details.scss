@@ -1,0 +1,125 @@
+.details {
+  margin-bottom: 177px;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  &__content {
+    grid-column: 2 / 4;
+
+    padding-top: 95px;
+  }
+
+  &__title,
+  &__title-shadow {
+    font-size: 128px;
+    font-weight: 400;
+    margin-left: -12px;
+    margin-bottom: -17px;
+  }
+
+  &__title-shadow {
+    font-family: Jura;
+    font-weight: 400;
+
+    position: absolute;
+    top: -145px;
+    left: 0;
+    width: max-content;
+    height: max-content;
+  }
+
+  &__info {
+    aspect-ratio: 1.15;
+    position: relative;
+    overflow: hidden;
+
+    color: #fff;
+    background-color: var(--c-primary);
+
+    padding-top: 106px;
+    padding-inline: 70px;
+    padding-bottom: 84px;
+
+    & h2 {
+      font-size: 40px;
+      font-weight: 400;
+      margin-bottom: 40px;
+    }
+
+    & p {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.33;
+    }
+  }
+
+  &__line {
+    position: absolute;
+    background-repeat: no-repeat;
+
+    &--position {
+      bottom: -55px;
+      left: 0;
+
+      display: block;
+      width: 40px;
+      height: 870px;
+      background-image: url(../assets/image/position-shadow.png);
+    }
+
+    &--eyes {
+      bottom: -4px;
+      left: -30px;
+
+      display: block;
+      width: 870px;
+      height: 40px;
+      background-image: url(../assets/image/eyes-shadow.png);
+    }
+
+    &--breathing {
+      bottom: 0;
+      right: -1px;
+
+      display: block;
+      width: 40px;
+      height: 870px;
+      background-image: url(../assets/image/breathing-shadow.png);
+    }
+
+    &--mind {
+      bottom: -1px;
+      right: -20px;
+
+      display: block;
+      width: 870px;
+      height: 40px;
+      background-image: url(../assets/image/mind-shadow.png);
+    }
+
+    &--time {
+      top: 0;
+      left: -20px;
+
+      display: block;
+      width: 870px;
+      height: 40px;
+      background-image: url(../assets/image/mind-shadow.png);
+      transform: rotate(180deg);
+    }
+
+    &--end {
+      bottom: -55px;
+      left: 0;
+
+      display: block;
+      width: 40px;
+      height: 870px;
+      background-image: url(../assets/image/position-shadow.png);
+    }
+  }
+}

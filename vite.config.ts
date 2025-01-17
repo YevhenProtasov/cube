@@ -5,4 +5,11 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   base: '/',
   plugins: [react()],
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `@import "@/styles/variables.scss";`  // Automatically import global styles
+  //     }
+  //   }
+  // }
 });

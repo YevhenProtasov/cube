@@ -1,10 +1,10 @@
-import './styles/App.css';
-import { HomePage } from './modules/HomePage';
+import { Outlet } from 'react-router';
+import './styles/App.scss';
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Outlet />
     </>
   );
 }

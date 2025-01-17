@@ -64,9 +64,17 @@
 /* #endregion */
 
 /* #region Step Position */
-.step {
+.steps {
+  display: grid;
+  gap: 334px;
   padding-top: 94px;
   margin-bottom: 240px;
+}
+
+.step {
+  &:hover {
+    background-color: rgb(252 252 252);
+  }
 }
 .step__wrapper {
   display: grid;
