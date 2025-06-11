@@ -1,16 +1,17 @@
+@use './mixins.scss' as func;
 @import '../../styles/Variables.css';
 
 .about-us {
   color: #fff;
   min-height: 100vh;
-  padding-block: 118px;
+  padding-block: func.get-vw(118px);
   background-color: var(--c-primary);
 
   &__wrapper {
     display: grid;
     // align-items: center;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: func.get-vw(18px);
   }
 
   &__graphic {
@@ -20,18 +21,18 @@
 
   &__line {
     position: relative;
-    width: 106px;
-    max-height: 731px;
+    width: func.get-vw(106px);
+    max-height: func.get-vw(731px);
     background-color: #fff;
 
     &::before {
       content: '';
       position: absolute;
-      right: 24px;
-      top: -31px;
+      right: func.get-vw(24px);
+      top: calc(0px - func.get-vw(31px));
       display: block;
-      width: 225px;
-      height: 660px;
+      width: func.get-vw(225px);
+      height: func.get-vw(660px);
       background-image: url('../../assets/image/about-us__shadow.png');
     }
   }
@@ -39,24 +40,24 @@
   &__links {
     display: flex;
     flex-direction: column;
-    gap: 19px;
+    gap: func.get-vw(19px);
   }
 
   &__link {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 106px;
-    height: 106px;
+    width: func.get-vw(106px);
+    height: func.get-vw(106px);
     background-color: #fff;
   }
 
   &__typography {
     grid-column: 2 span;
 
-    max-height: 770px;
+    max-height: func.get-vw(770px);
 
-    padding-top: 72px;
+    padding-top: func.get-vw(72px);
 
     overflow-y: auto;
     scrollbar-width: none;
@@ -68,14 +69,15 @@
   }
 
   &__title {
-    font-size: 64px;
+    font-family: Jura;
+    font-size: func.get-vw(64px);
     font-weight: 400;
     line-height: 1.2;
-    margin-bottom: 36px;
+    margin-bottom: func.get-vw(36px);
   }
 
   &__text {
-    font-size: 24px;
+    font-size: func.get-vw(24px);
     font-weight: 400;
     line-height: 1.33;
   }
@@ -85,7 +87,7 @@
   background-color: #d9d9d9;
 
   &__wrapper {
-    height: 914px;
+    height: func.get-vw(914px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,14 +97,14 @@
 .play {
   display: grid;
   place-items: center;
-  width: 150px;
-  height: 70px;
+  width: func.get-vw(150px);
+  height: func.get-vw(70px);
 }
 
 // Temporary
 .temp_shadow {
-  width: 250px;
-  height: 764px;
+  width: func.get-vw(250px);
+  height: func.get-vw(764px);
   background-image: url(../../assets/image/about-us__shadow_image.png);
-  margin-top: -32px;
+  margin-top: calc(0px - func.get-vw(32px));
 }

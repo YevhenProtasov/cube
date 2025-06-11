@@ -3,3 +3,10 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
 }
+
+@function get-vw($target, $base-width: 1920) {
+    $vw-context: (
+        $base-width * 0.01) * 1px;
+    @return calc(($target / $vw-context) * 1vw
+  );
+}

@@ -1,9 +1,6 @@
-import { Header } from '../../shared/components/Header';
-
-export const TimePage = () => {
+export const TimeStep = () => {
   return (
     <>
-      <Header linkTo='/' />
       <section className='details'>
         <div className='container'>
           <div className='details__wrapper'>

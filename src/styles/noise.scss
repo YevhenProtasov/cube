@@ -1,0 +1,13 @@
+.noise {
+  z-index: var(--z-noise);
+  pointer-events: none;
+
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/image/noise.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  mix-blend-mode: multiply;
+}

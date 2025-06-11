@@ -1,9 +1,6 @@
-import { Header } from '../../shared/components/Header';
-
-export const PositionPage = () => {
+export const PositionStep = () => {
   return (
     <>
-      <Header linkTo='/' />
       <section className='details'>
         <div className='container'>
           <div className='details__wrapper'>

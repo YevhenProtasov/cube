@@ -1,9 +1,6 @@
-import { Header } from '../../shared/components/Header';
-
-export const EyesPage = () => {
+export const EyesStep = () => {
   return (
     <>
-      <Header linkTo='/' />
       <section className='details'>
         <div className='container'>
           <div className='details__wrapper'>
