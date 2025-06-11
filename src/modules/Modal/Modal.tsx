@@ -1,6 +1,86 @@
+// import { gsap } from 'gsap';
+// import { useGSAP } from '@gsap/react';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import SplitType from 'split-type';
+
 import { LinkBox } from "../HomePage/components/LinkBox";
 
 export const Modal = () => {
+  // gsap.registerPlugin(useGSAP);
+  // gsap.registerPlugin(ScrollTrigger);
+
+  // useGSAP(() => {
+  //   if (window.innerWidth < 1280) {
+  //     return;
+  //   }
+
+  //   const aboutUsWrapper = document.querySelector('.about-us__wrapper');
+  //   const graphic = aboutUsWrapper?.querySelector('.temp_shadow');
+  //   const socials = aboutUsWrapper?.querySelector('.about-us__links');
+  //   const graphicHeight = graphic?.clientHeight;
+  //   const socialsHeight = socials?.clientHeight;
+
+  //   const content = aboutUsWrapper?.querySelector('.about-us__typography');
+  //   const contentHeight = content?.clientHeight;
+
+  //   const startValue = 80;
+  //   const endValue = 50;
+  //   const graphicOffset = window.innerWidth < 1920 ? 24 : 32;
+
+  //   if (graphicHeight && contentHeight && socialsHeight) {
+  //     // console.log('fires', {graphicHeight, contentHeight, socialsHeight});
+  //     console.log('fires', {aboutUsWrapper});
+      
+  //     gsap.to(graphic, {
+  //       scrollTrigger: {
+  //         trigger: aboutUsWrapper,
+  //         start: `top +=${startValue}px`,
+  //         end: `+=${contentHeight - graphicHeight - endValue}`,
+  //         scrub: true,
+  //         pin: graphic,
+  //         pinSpacing: false,
+  //         markers: true,
+  //       },
+  //     });
+
+  //     gsap.to(socials, {
+  //       scrollTrigger: {
+  //         trigger: aboutUsWrapper,
+  //         start: `top +=${startValue}px`,
+  //         end: `+=${contentHeight - socialsHeight - endValue - graphicOffset}`,
+  //         scrub: true,
+  //         pin: socials,
+  //         pinSpacing: false,
+  //         markers: false,
+  //       },
+  //     });
+  //   }
+
+
+    // Reveal text on scroll
+    // const textToReveal = document.querySelectorAll('.about-us__text');
+
+    // textToReveal.forEach((word) => {
+    //   // const activeColor = '#ffffff';
+    //   // const bgColor = '#353535';
+
+    //   const text = new SplitType(word as HTMLElement, { types: 'words' });
+
+    //   gsap.from(text.words, {
+    //     opacity: 0.2,
+    //     stagger: 0.1,
+    //     scrollTrigger: {
+    //       trigger: word,
+    //       start: 'top 80%',
+    //       end: 'top 50%',
+    //       scrub: true,
+    //       markers: false,
+    //       toggleActions: 'play play reverse reverse',
+    //     },
+    //   });
+    // });
+  // }, []);
+
   return (
     <div id='modal--about' className='modal modal--about'>
       {/* <div className='link-box link-box--light'>

@@ -1,24 +1,26 @@
+@use './mixins.scss' as func;
+
 .details {
-  margin-bottom: 177px;
+  margin-bottom: func.get-vw(177px);
 
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: func.get-vw(18px);
   }
 
   &__content {
     grid-column: 2 / 4;
 
-    padding-top: 95px;
+    padding-top: func.get-vw(95px);
   }
 
   &__title,
   &__title-shadow {
-    font-size: 128px;
+    font-size: func.get-vw(128px);
     font-weight: 400;
-    margin-left: -12px;
-    margin-bottom: -17px;
+    margin-left: calc(0px - func.get-vw(12px));
+    margin-bottom: calc(0px - func.get-vw(17px));
   }
 
   &__title-shadow {
@@ -26,7 +28,7 @@
     font-weight: 400;
 
     position: absolute;
-    top: -145px;
+    top: calc(0px - func.get-vw(145px));
     left: 0;
     width: max-content;
     height: max-content;
@@ -40,18 +42,18 @@
     color: #fff;
     background-color: var(--c-primary);
 
-    padding-top: 106px;
-    padding-inline: 70px;
-    padding-bottom: 84px;
+    padding-top: func.get-vw(106px);
+    padding-inline: func.get-vw(70px);
+    padding-bottom: func.get-vw(84px);
 
     & h2 {
-      font-size: 40px;
+      font-size: func.get-vw(40px);
       font-weight: 400;
-      margin-bottom: 40px;
+      margin-bottom: func.get-vw(40px);
     }
 
     & p {
-      font-size: 24px;
+      font-size: func.get-vw(24px);
       font-weight: 400;
       line-height: 1.33;
     }
@@ -62,63 +64,63 @@
     background-repeat: no-repeat;
 
     &--position {
-      bottom: -55px;
+      bottom: calc(0px - func.get-vw(55px));
       left: 0;
 
       display: block;
-      width: 40px;
-      height: 870px;
+      width: func.get-vw(40px);
+      height: func.get-vw(870px);
       background-image: url(../assets/image/position-shadow.png);
     }
 
     &--eyes {
-      bottom: -4px;
-      left: -30px;
+      bottom: calc(0px - func.get-vw(4px));
+      left: calc(0px - func.get-vw(30px));
 
       display: block;
-      width: 870px;
-      height: 40px;
+      width: func.get-vw(870px);
+      height: func.get-vw(40px);
       background-image: url(../assets/image/eyes-shadow.png);
     }
 
     &--breathing {
       bottom: 0;
-      right: -1px;
+      right: calc(0px - func.get-vw(1px));
 
       display: block;
-      width: 40px;
-      height: 870px;
+      width: func.get-vw(40px);
+      height: func.get-vw(870px);
       background-image: url(../assets/image/breathing-shadow.png);
     }
 
     &--mind {
-      bottom: -1px;
-      right: -20px;
+      bottom: calc(0px - func.get-vw(1px));
+      right: calc(0px - func.get-vw(20px));
 
       display: block;
-      width: 870px;
-      height: 40px;
+      width: func.get-vw(870px);
+      height: func.get-vw(40px);
       background-image: url(../assets/image/mind-shadow.png);
     }
 
     &--time {
       top: 0;
-      left: -20px;
+      left: calc(0px - func.get-vw(20px));
 
       display: block;
-      width: 870px;
-      height: 40px;
+      width: func.get-vw(870px);
+      height: func.get-vw(40px);
       background-image: url(../assets/image/mind-shadow.png);
       transform: rotate(180deg);
     }
 
     &--end {
-      bottom: -55px;
+      bottom: calc(0px - func.get-vw(55px));
       left: 0;
 
       display: block;
-      width: 40px;
-      height: 870px;
+      width: func.get-vw(40px);
+      height: func.get-vw(870px);
       background-image: url(../assets/image/position-shadow.png);
     }
   }

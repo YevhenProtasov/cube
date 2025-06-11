@@ -1,10 +1,12 @@
+@use './mixins.scss' as func;
+
 .footer {
-  margin-bottom: 32px;
+  margin-bottom: func.get-vw(32px);
 
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: func.get-vw(18px);
   }
 
   &__image {
@@ -15,20 +17,24 @@
   }
 
   &__links {
-    padding-top: 32px;
+    padding-top: func.get-vw(32px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: func.get-vw(20px);
   }
 
   &__link {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 106px;
-    height: 106px;
+    width: func.get-vw(106px);
+    height: func.get-vw(106px);
     background-color: var(--c-primary);
-
+    &:hover {
+      background-image: url(../assets/image/hover-light.png);
+      background-size: cover;
+      background-position: -6px -1px;
+    }
     & .icon {
       background-color: #fff;
     }

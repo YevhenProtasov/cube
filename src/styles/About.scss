@@ -12,11 +12,33 @@
     // align-items: center;
     grid-template-columns: repeat(4, 1fr);
     gap: func.get-vw(18px);
+
+    // @include on-tablet {
+    //   grid-template-columns: repeat(8, 1fr);
+    //   gap: 18px;
+    // }
+
+    // @include on-desktop {
+    //   grid-template-columns: repeat(4, 1fr);
+    //   gap: 18px;
+    // }
   }
 
   &__graphic {
     display: flex;
     justify-content: flex-end;
+    height: fit-content;
+
+    // grid-row: 3;
+
+    // @include on-tablet {
+    //   grid-column: 2 span;
+    //   grid-row: 1;
+    // }
+
+    // @include on-desktop {
+    //   grid-column: 1 span;
+    // }
   }
 
   &__line {
@@ -41,6 +63,8 @@
     display: flex;
     flex-direction: column;
     gap: func.get-vw(19px);
+
+    height: fit-content;
   }
 
   &__link {
@@ -50,12 +74,21 @@
     width: func.get-vw(106px);
     height: func.get-vw(106px);
     background-color: #fff;
+    @media(hover:hover) {
+      &:hover {
+        background-image: url(../assets/image/hover-dark.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: rgb(218, 218, 255);
+      }
+    }
   }
 
   &__typography {
     grid-column: 2 span;
 
-    max-height: func.get-vw(770px);
+    // max-height: func.get-vw(770px);
 
     padding-top: func.get-vw(72px);
 
@@ -66,6 +99,22 @@
     //   width: 0px;
     //   height: 0px;
     // }
+    // @include on-tablet {
+    //   grid-column: 5 span;
+    //   padding-top: 72px;
+    // }
+
+    // @include on-desktop {
+    //   grid-column: 2 span;
+    // }
+
+    &-block {
+      margin-bottom: clamp(80px, 100vw, get-vw(250px));
+
+      & p:not(:last-of-type) {
+        margin-bottom: 18px;
+      }
+    }
   }
 
   &__title {
@@ -105,6 +154,8 @@
 .temp_shadow {
   width: func.get-vw(250px);
   height: func.get-vw(764px);
-  background-image: url(../../assets/image/about-us__shadow_image.png);
+  background-image: url(../assets/image/about-us__shadow_image.png);
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-top: calc(0px - func.get-vw(32px));
 }

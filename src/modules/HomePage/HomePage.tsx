@@ -1,3 +1,4 @@
+import { gsap } from 'gsap';
 // import reactLogo from '../../assets/react.svg';
 // import viteLogo from '/vite.svg';
 import heroLogo from '../../assets/image/logo_mirror--large.png';
@@ -14,6 +15,7 @@ import { EndStep } from '../EndStep';
 import { PositionStep } from '../PositionStep';
 import { BreathingStep } from '../BreathingStep';
 import { LinkBox } from './components/LinkBox';
+import { PixelGridTransition } from '../PixelGridTransition';
 // import { StepSection } from './components/StepSection';
 // import { Header } from '../../shared/components/Header';
 
@@ -67,12 +69,57 @@ export const HomePage = () => {
     const aboutModal = document.querySelector('#modal--about');
     aboutButtons?.forEach((btn) => {
       btn.addEventListener('click', () => {
-        aboutModal?.classList.add('active');
+        gsap.set('.pixel-grid', { display: 'flex' });
+        gsap.fromTo(
+          '.pixel-grid__block',
+          {
+            opacity: 0,
+          },
+          {
+            opacity: 1,
+            duration: 0.001,
+            stagger: { amount: 0.5, from: 'random' },
+            onComplete: () => {
+              aboutModal?.classList.add('active');
+              gsap.to('.pixel-grid__block', {
+                opacity: 0,
+                duration: 0.001,
+                stagger: { amount: 0.5, from: 'random' },
+                onComplete: () => {
+                  gsap.set('.pixel-grid', { display: 'none' });
+                },
+              });
+            },
+          }
+        );
       });
     });
+
     const closeAbout = document.querySelector('#modal--about .link-box');
     closeAbout?.addEventListener('click', () => {
-      aboutModal?.classList.remove('active');
+      gsap.set('.pixel-grid', { display: 'flex' });
+      gsap.fromTo(
+        '.pixel-grid__block',
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.001,
+          stagger: { amount: 0.5, from: 'random' },
+          onComplete: () => {
+            aboutModal?.classList.remove('active');
+            gsap.to('.pixel-grid__block', {
+              opacity: 0,
+              duration: 0.001,
+              stagger: { amount: 0.5, from: 'random' },
+              onComplete: () => {
+                gsap.set('.pixel-grid', { display: 'none' });
+              },
+            });
+          },
+        }
+      );
     });
     // #endregion about button
 
@@ -93,15 +140,16 @@ export const HomePage = () => {
 
   return (
     <>
+      <PixelGridTransition />
       {/* <Header
         linkTo='/about-us'
         title='About the Project: The Meditation Cube'
       /> */}
 
       <main className='main'>
-        <Modal />
-
         <div className='wrapper'>
+          <Modal />
+
           <section className='frame frame--1' data-frame-pos='1'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
