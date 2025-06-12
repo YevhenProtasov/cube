@@ -5,7 +5,7 @@ import heroLogo from '../../assets/image/logo_mirror--large.png';
 import line from '../../assets/image/line-j.png';
 import square from '../../assets/image/square.png';
 import shadow from '../../assets/image/shadow.png';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './HomePage.scss';
 import { Modal } from '../Modal';
 import { EyesStep } from '../EyesStep';
@@ -25,6 +25,12 @@ enum Direction {
 }
 
 export const HomePage = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  function handleIsOpen() {
+    setOpen(!open);
+  }
+
   function paginate(direction: Direction) {
     const frames = document.querySelectorAll('.frame');
 
@@ -81,6 +87,7 @@ export const HomePage = () => {
             stagger: { amount: 0.5, from: 'random' },
             onComplete: () => {
               aboutModal?.classList.add('active');
+              handleIsOpen();
               gsap.to('.pixel-grid__block', {
                 opacity: 0,
                 duration: 0.001,
@@ -109,6 +116,7 @@ export const HomePage = () => {
           stagger: { amount: 0.5, from: 'random' },
           onComplete: () => {
             aboutModal?.classList.remove('active');
+            handleIsOpen();
             gsap.to('.pixel-grid__block', {
               opacity: 0,
               duration: 0.001,
@@ -148,7 +156,7 @@ export const HomePage = () => {
 
       <main className='main'>
         <div className='wrapper'>
-          <Modal />
+          <Modal isOpen={open} />
 
           <section className='frame frame--1' data-frame-pos='1'>
             <div className='noise'></div>

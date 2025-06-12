@@ -7,7 +7,9 @@ type Props = {
 
 export const LinkBox: React.FC<Props> = ({type, style}) => {
   return (
-    <div className={`link-box ${style && 'link-box--light'}`}>
+    <div
+      className={`link-box ${style && 'link-box--light'}`}
+    >
       <span className={`link-box__title ${style && 'link-box__title--light'}`}>
         {type === 'outer' && ('About the Project: The Meditation Cube')}
         {type === 'inner' && ('The Meditation Cube')}
