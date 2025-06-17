@@ -4,6 +4,12 @@
   gap: 18px;
 }
 
+@mixin mobile {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
 @function get-vw($target, $base-width: 1920) {
     $vw-context: (
         $base-width * 0.01) * 1px;

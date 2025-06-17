@@ -13,6 +13,10 @@
     grid-column: 2 / 4;
 
     padding-top: func.get-vw(95px);
+    @include func.mobile {
+      grid-column: 1 / 5;
+      padding-top: func.get-vw(80px,375);
+    }
   }
 
   &__title,
@@ -21,6 +25,11 @@
     font-weight: 400;
     margin-left: calc(0px - func.get-vw(12px));
     margin-bottom: calc(0px - func.get-vw(17px));
+    @include func.mobile {
+      font-size: func.get-vw(48px,375);
+      margin-left: calc(0px - func.get-vw(4.5px,375));
+      margin-bottom: calc(0px - func.get-vw(6px,375));
+    }
   }
 
   &__title-shadow {
@@ -32,6 +41,9 @@
     left: 0;
     width: max-content;
     height: max-content;
+    @include func.mobile {
+      top: calc(0px - func.get-vw(54px,375));
+    }
   }
 
   &__info {
@@ -45,23 +57,47 @@
     padding-top: func.get-vw(106px);
     padding-inline: func.get-vw(70px);
     padding-bottom: func.get-vw(84px);
+    @include func.mobile {
+      aspect-ratio: unset;
+      padding-top: func.get-vw(48px,375);
+      padding-inline: func.get-vw(54px,375) func.get-vw(26px,375);
+      padding-bottom: func.get-vw(48px,375);
+
+      &--eyes,
+      &--mind,
+      &--time {
+        padding-left: func.get-vw(26px,375);
+      }
+      &--breathing {
+        padding-inline: func.get-vw(26px,375) func.get-vw(54px,375);
+      }
+    }
 
     & h2 {
       font-size: func.get-vw(40px);
       font-weight: 400;
       margin-bottom: func.get-vw(40px);
+      @include func.mobile {
+        font-size: func.get-vw(20px,375);
+        margin-bottom: func.get-vw(24px,375);
+      }
     }
 
     & p {
       font-size: func.get-vw(24px);
       font-weight: 400;
       line-height: 1.33;
+      @include func.mobile {
+        font-size: func.get-vw(10px,375);
+        line-height: 1.5;
+      }
     }
   }
 
   &__line {
     position: absolute;
     background-repeat: no-repeat;
+    background-size: contain;
 
     &--position {
       bottom: calc(0px - func.get-vw(55px));
@@ -71,6 +107,12 @@
       width: func.get-vw(40px);
       height: func.get-vw(870px);
       background-image: url(../assets/image/position-shadow.png);
+      @include func.mobile {
+        left: -1px;
+        bottom: calc(0px - func.get-vw(178px,375));
+        width: func.get-vw(20px,375);
+        height: func.get-vw(594px,375);
+      }
     }
 
     &--eyes {
@@ -81,6 +123,12 @@
       width: func.get-vw(870px);
       height: func.get-vw(40px);
       background-image: url(../assets/image/eyes-shadow.png);
+      @include func.mobile {
+        bottom: calc(0px - func.get-vw(6px,375));
+        left: calc(0px - func.get-vw(9px,375));
+        width: func.get-vw(355px,375);
+        height: func.get-vw(20px,375);
+      }
     }
 
     &--breathing {
@@ -91,6 +139,12 @@
       width: func.get-vw(40px);
       height: func.get-vw(870px);
       background-image: url(../assets/image/breathing-shadow.png);
+      @include func.mobile {
+        top: calc(0px - func.get-vw(10px,375));
+        right: calc(0px - func.get-vw(1px,375));
+        width: func.get-vw(20px,375);
+        height: func.get-vw(594px,375);
+      }
     }
 
     &--mind {
@@ -101,6 +155,12 @@
       width: func.get-vw(870px);
       height: func.get-vw(40px);
       background-image: url(../assets/image/mind-shadow.png);
+      @include func.mobile {
+        right: calc(0px - func.get-vw(6px,375));
+        bottom: calc(0px - func.get-vw(6px,375));
+        width: func.get-vw(355px,375);
+        height: func.get-vw(20px,375);
+      }
     }
 
     &--time {
@@ -112,6 +172,12 @@
       height: func.get-vw(40px);
       background-image: url(../assets/image/mind-shadow.png);
       transform: rotate(180deg);
+      @include func.mobile {
+        top: calc(0px - func.get-vw(6px,375));
+        left: calc(0px - func.get-vw(6px,375));
+        width: func.get-vw(355px,375);
+        height: func.get-vw(20px,375);
+      }
     }
 
     &--end {
@@ -122,6 +188,12 @@
       width: func.get-vw(40px);
       height: func.get-vw(870px);
       background-image: url(../assets/image/position-shadow.png);
+      @include func.mobile {
+        left: calc(0px - func.get-vw(1px,375));
+        bottom: calc(0px - func.get-vw(261px,375));
+        width: func.get-vw(20px,375);
+        height: func.get-vw(594px,375);
+      }
     }
   }
 }

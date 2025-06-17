@@ -6,7 +6,7 @@ export const EyesStep = () => {
           <div className='details__wrapper'>
             <div className='details__content'>
               <h1 className='details__title'>Eyes</h1>
-              <div className='details__info'>
+              <div className='details__info details__info--eyes'>
                 <span className='details__title-shadow'>Eyes</span>
                 <h2>Keep Your Eyes Open</h2>
                 <p>

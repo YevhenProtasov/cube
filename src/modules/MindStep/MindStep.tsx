@@ -6,7 +6,7 @@ export const MindStep = () => {
           <div className='details__wrapper'>
             <div className='details__content'>
               <h1 className='details__title'>Mind</h1>
-              <div className='details__info'>
+              <div className='details__info details__info--mind'>
                 <h2>
                   Observe Your Thoughts <br /> Without Judgment
                 </h2>

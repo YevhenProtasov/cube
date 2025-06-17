@@ -23,8 +23,8 @@
     mask-image: url('../assets/icon/icon-linkedin.svg');
   }
 
-  &--telegram {
-    mask-image: url('../assets/icon/icon-telegram.svg');
+  &--behance {
+    mask-image: url('../assets/icon/icon-behance.svg');
   }
 
   &--pinterest {
@@ -35,7 +35,7 @@
   &--facebook,
   &--youtube,
   &--linkedin,
-  &--telegram,
+  &--behance,
   &--pinterest {
     mask-position: center;
     mask-repeat: no-repeat;

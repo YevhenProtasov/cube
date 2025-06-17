@@ -4,16 +4,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
 
 import { LinkBox } from "../HomePage/components/LinkBox";
+import { useEffect } from 'react';
+import ReactPlayer from 'react-player';
 
 type Props = {
   isOpen?: boolean;
+  onClose: () => void;
 }
 
-export const Modal:React.FC<Props> = ({ isOpen }) => {
+export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger);
 
-  useGSAP(() => {
+  useEffect(() => {
     if (window.innerWidth < 1280 || !isOpen) {
       return;
     }
@@ -63,20 +66,22 @@ export const Modal:React.FC<Props> = ({ isOpen }) => {
 
     // Reveal text on scroll
     const textToReveal = document.querySelectorAll('.about-us__text');
+    const aboutUs = document.querySelector('#modal--about');
 
-    textToReveal.forEach((word) => {
+    textToReveal.forEach((word, index) => {
       // const activeColor = '#ffffff';
       // const bgColor = '#353535';
-
       const text = new SplitType(word as HTMLElement, { types: 'words' });
 
       gsap.from(text.words, {
         opacity: 0.2,
         stagger: 0.1,
+        duration: 0.5,
         scrollTrigger: {
+          scroller: aboutUs,
           trigger: word,
-          start: 'top 80%',
-          end: 'top 50%',
+          start: `${!index ? 'top 80%' : 'top 75%'}`,
+          end: `${!index ? 'top 50%' : 'top 30%'}`,
           scrub: true,
           markers: false,
           toggleActions: 'play play reverse reverse',
@@ -86,11 +91,11 @@ export const Modal:React.FC<Props> = ({ isOpen }) => {
   }, [isOpen]);
 
   return (
-    <div id='modal--about' className='modal modal--about'>
+    <div id='modal--about' className={`modal modal--about ${isOpen ? 'active' : ''}`}>
       {/* <div className='link-box link-box--light'>
         <span className="link-box__title link-box__title--light">The Meditation Cube</span>
       </div> */}
-      <LinkBox type='inner' style="light" />
+      <LinkBox type='inner' style="light" onOpen={onClose} />
 
       <section className='about-us'>
         <div className='container'>
@@ -101,32 +106,32 @@ export const Modal:React.FC<Props> = ({ isOpen }) => {
             </div>
             <ul className='about-us__links'>
               <li>
-                <a href='#' className='about-us__link' target='_blank'>
+                <a href='https://www.instagram.com/torisstudio' className='about-us__link' target='_blank'>
                   <span className='icon icon--instagram'></span>
                 </a>
               </li>
               <li>
-                <a href='#' className='about-us__link' target='_blank'>
+                <a href='https://www.facebook.com/people/Meditation-Cube/61577078050799/?mibextid=wwXIfr' className='about-us__link' target='_blank'>
                   <span className='icon icon--facebook'></span>
                 </a>
               </li>
               <li>
-                <a href='#' className='about-us__link' target='_blank'>
+                <a href='https://youtu.be/_Vp4-CmUYrE' className='about-us__link' target='_blank'>
                   <span className='icon icon--youtube'></span>
                 </a>
               </li>
               <li>
-                <a href='#' className='about-us__link' target='_blank'>
+                <a href='https://www.linkedin.com/in/oleksandra-tsymbaliuk-a970ba49/' className='about-us__link' target='_blank'>
                   <span className='icon icon--linkedin'></span>
                 </a>
               </li>
               <li>
-                <a href='#' className='about-us__link' target='_blank'>
-                  <span className='icon icon--telegram'></span>
+                <a href='https://www.behance.net/torisstudio#' className='about-us__link' target='_blank'>
+                  <span className='icon icon--behance'></span>
                 </a>
               </li>
               <li>
-                <a href='#' className='about-us__link' target='_blank'>
+                <a href='https://ru.pinterest.com/torisstudio0078/' className='about-us__link' target='_blank'>
                   <span className='icon icon--pinterest'></span>
                 </a>
               </li>
@@ -163,11 +168,11 @@ export const Modal:React.FC<Props> = ({ isOpen }) => {
               <br />
               <br />
 
-              <h2 className='about-us__title'>
-                The Birth <br />
-                of the Cube
-              </h2>
               <p className='about-us__text'>
+                <span className='about-us__title'>
+                  The Birth <br />
+                  of the Cube
+                </span>
                 The Meditation Cube emerged as a physical and conceptual space
                 for introspection and peace. Its minimalist design reflects
                 the simplicity of mindfulness, while its structure symbolizes
@@ -195,10 +200,10 @@ export const Modal:React.FC<Props> = ({ isOpen }) => {
               <br />
               <br />
 
-              <h2 className='about-us__title'>
-                The Purpose <br /> of the Meditation Cube
-              </h2>
               <p className='about-us__text'>
+                <span className='about-us__title'>
+                  The Purpose <br /> of the Meditation Cube
+                </span>
                 At its core, the Meditation Cube is a tool for mindfulness.
                 It’s designed to help anyone, regardless of their experience
                 with meditation, connect with their inner calm. Each side of
@@ -228,11 +233,11 @@ export const Modal:React.FC<Props> = ({ isOpen }) => {
               <br />
               <br />
 
-              <h2 className='about-us__title'>
-                A Vision <br />
-                for the Future
-              </h2>
               <p className='about-us__text'>
+                <span className='about-us__title'>
+                  A Vision <br />
+                  for the Future
+                </span>
                 The Meditation Cube is just the beginning of my exploration of
                 interactive art and mindfulness. I see it as part of a larger
                 vision to create spaces—both physical and virtual—that inspire
@@ -264,14 +269,20 @@ export const Modal:React.FC<Props> = ({ isOpen }) => {
         </div>
       </section>
       <section className='video'>
-        <div className='container'>
+        {/* <div className='container'> */}
           <div className='video__wrapper'>
-            <div className='play'>
+              <ReactPlayer
+                url='https://youtu.be/_Vp4-CmUYrE'
+                controls
+                width='100%'
+                height='100%'
+              />
+            {/* <div className='play'>
               <span className='icon icon--youtube'></span>
               <p>coming soon</p>
-            </div>
+            </div> */}
           </div>
-        </div>
+        {/* </div> */}
       </section>
     </div>
   );

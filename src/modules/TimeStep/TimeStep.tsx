@@ -6,7 +6,7 @@ export const TimeStep = () => {
           <div className='details__wrapper'>
             <div className='details__content'>
               <h1 className='details__title'>Time</h1>
-              <div className='details__info'>
+              <div className='details__info details__info--time'>
                 <h2>Embrace the Moment</h2>
                 <p>
                   Zen meditation doesn’t require hours of practice to be

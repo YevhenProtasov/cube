@@ -25,6 +25,9 @@
   }
 
   &__graphic {
+    position: sticky;
+    top: 80px;
+
     display: flex;
     justify-content: flex-end;
     height: fit-content;
@@ -60,6 +63,9 @@
   }
 
   &__links {
+    position: sticky;
+    top: 80px;
+
     display: flex;
     flex-direction: column;
     gap: func.get-vw(19px);
@@ -118,6 +124,8 @@
   }
 
   &__title {
+    width: 100%;
+
     font-family: Jura;
     font-size: func.get-vw(64px);
     font-weight: 400;
@@ -136,7 +144,8 @@
   background-color: #d9d9d9;
 
   &__wrapper {
-    height: func.get-vw(914px);
+    width: 100vw;
+    aspect-ratio: 16 / 9;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -6,7 +6,7 @@ export const BreathingStep = () => {
           <div className='details__wrapper'>
             <div className='details__content'>
               <h1 className='details__title'>Breathing</h1>
-              <div className='details__info'>
+              <div className='details__info details__info--breathing'>
                 <span className='details__title-shadow'>Breathing</span>
                 <h2>Follow Your Breath</h2>
                 <p>

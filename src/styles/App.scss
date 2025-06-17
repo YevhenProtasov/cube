@@ -1,3 +1,4 @@
+@use './mixins.scss' as func;
 @import './Variables.css';
 
 /* <uniquifier>: Use a unique and descriptive class name */
@@ -99,8 +100,11 @@ ul {
 
 .container {
   width: 100%;
-  max-width: 1920px;
+  // max-width: 1920px;
   padding-inline: 18px;
+  @include func.mobile {
+    padding-inline: func.get-vw(10px,375);
+  }
 }
 
 .link-box {

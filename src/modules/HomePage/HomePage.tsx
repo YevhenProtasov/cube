@@ -5,7 +5,7 @@ import heroLogo from '../../assets/image/logo_mirror--large.png';
 import line from '../../assets/image/line-j.png';
 import square from '../../assets/image/square.png';
 import shadow from '../../assets/image/shadow.png';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './HomePage.scss';
 import { Modal } from '../Modal';
 import { EyesStep } from '../EyesStep';
@@ -25,18 +25,19 @@ enum Direction {
 }
 
 export const HomePage = () => {
+  const [firstRender, setFirstRender] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
+  const [openHidden, setOpenHidden] = useState<boolean>(false);
 
-  function handleIsOpen() {
-    setOpen(!open);
-  }
+  const handleIsOpen = useCallback(() => {
+    // setOpen(prev => !prev);
+    setOpenHidden(prev => !prev);
+  }, []);
 
   function paginate(direction: Direction) {
     const frames = document.querySelectorAll('.frame');
 
     if (direction === Direction.Next) {
-      console.log('next');
-
       frames.forEach((frame) => {
         const currPos = frame.getAttribute('data-frame-pos');
         const newPos = Number(currPos) - 1;
@@ -45,8 +46,6 @@ export const HomePage = () => {
     }
 
     if (direction === Direction.Prev) {
-      console.log('prev');
-
       frames.forEach((frame) => {
         const currPos = frame.getAttribute('data-frame-pos');
         const newPos = Number(currPos) + 1;
@@ -56,8 +55,40 @@ export const HomePage = () => {
   }
 
   useEffect(() => {
-    console.log('home');
+    if (firstRender) {
+      setFirstRender(false);
+      return;
+    }
+    // #region transition
+    gsap.set('.pixel-grid', { display: 'flex' });
+    gsap.fromTo(
+      '.pixel-grid__block',
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.001,
+        stagger: { amount: 0.5, from: 'random' },
+        onComplete: () => {
+          // aboutModal?.classList.add('active');
+          // handleIsOpen();
+          setOpen(prev => !prev);
+          gsap.to('.pixel-grid__block', {
+            opacity: 0,
+            duration: 0.001,
+            stagger: { amount: 0.5, from: 'random' },
+            onComplete: () => {
+              gsap.set('.pixel-grid', { display: 'none' });
+            },
+          });
+        },
+      }
+    );
+    // #endregion transition
+  }, [openHidden]);
 
+  useEffect(() => {
     // #region Pagination
     const nextButtons = document.querySelectorAll('.frame__pagination-next');
     nextButtons?.forEach((button) => {
@@ -69,67 +100,6 @@ export const HomePage = () => {
       button.addEventListener('click', () => paginate(Direction.Prev));
     });
     // #endregion Pagination
-
-    // #region about button
-    const aboutButtons = document.querySelectorAll('.frame .link-box');
-    const aboutModal = document.querySelector('#modal--about');
-    aboutButtons?.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        gsap.set('.pixel-grid', { display: 'flex' });
-        gsap.fromTo(
-          '.pixel-grid__block',
-          {
-            opacity: 0,
-          },
-          {
-            opacity: 1,
-            duration: 0.001,
-            stagger: { amount: 0.5, from: 'random' },
-            onComplete: () => {
-              aboutModal?.classList.add('active');
-              handleIsOpen();
-              gsap.to('.pixel-grid__block', {
-                opacity: 0,
-                duration: 0.001,
-                stagger: { amount: 0.5, from: 'random' },
-                onComplete: () => {
-                  gsap.set('.pixel-grid', { display: 'none' });
-                },
-              });
-            },
-          }
-        );
-      });
-    });
-
-    const closeAbout = document.querySelector('#modal--about .link-box');
-    closeAbout?.addEventListener('click', () => {
-      gsap.set('.pixel-grid', { display: 'flex' });
-      gsap.fromTo(
-        '.pixel-grid__block',
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 0.001,
-          stagger: { amount: 0.5, from: 'random' },
-          onComplete: () => {
-            aboutModal?.classList.remove('active');
-            handleIsOpen();
-            gsap.to('.pixel-grid__block', {
-              opacity: 0,
-              duration: 0.001,
-              stagger: { amount: 0.5, from: 'random' },
-              onComplete: () => {
-                gsap.set('.pixel-grid', { display: 'none' });
-              },
-            });
-          },
-        }
-      );
-    });
-    // #endregion about button
 
     // #region details modal
     const detailsButtons = document.querySelectorAll('.frame__show-more');
@@ -156,7 +126,7 @@ export const HomePage = () => {
 
       <main className='main'>
         <div className='wrapper'>
-          <Modal isOpen={open} />
+          <Modal isOpen={open} onClose={handleIsOpen} />
 
           <section className='frame frame--1' data-frame-pos='1'>
             <div className='noise'></div>
@@ -164,7 +134,7 @@ export const HomePage = () => {
               {/* <div className='link-box'>
                 <span className='link-box__title'>About the Project: The Meditation Cube</span>
               </div> */}
-              <LinkBox type='outer' />
+              <LinkBox type='outer' onOpen={handleIsOpen} />
               <picture className='frame__picture'>
                 <img src={heroLogo} className='frame__image' />
               </picture>
@@ -195,7 +165,9 @@ export const HomePage = () => {
           <section className='frame frame--2' data-frame-pos='2'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <picture className='frame__picture'>
                 <img src={line} className='frame__image' />
               </picture>
@@ -225,7 +197,9 @@ export const HomePage = () => {
           <section className='frame frame--3' data-frame-pos='3'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <div className='frame__step'>
                 <picture className='frame__picture'>
                   <img src={square} className='frame__image' />
@@ -277,7 +251,9 @@ export const HomePage = () => {
           <section className='frame frame--4' data-frame-pos='4'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <div className='frame__step'>
                 <picture className='frame__picture'>
                   <img src={square} className='frame__image' />
@@ -329,7 +305,9 @@ export const HomePage = () => {
           <section className='frame frame--5' data-frame-pos='5'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <div className='frame__step'>
                 <picture className='frame__picture'>
                   <img src={square} className='frame__image' />
@@ -381,7 +359,9 @@ export const HomePage = () => {
           <section className='frame frame--6' data-frame-pos='6'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <div className='frame__step'>
                 <picture className='frame__picture'>
                   <img src={square} className='frame__image' />
@@ -433,7 +413,9 @@ export const HomePage = () => {
           <section className='frame frame--7' data-frame-pos='7'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <div className='frame__step'>
                 <picture className='frame__picture'>
                   <img src={square} className='frame__image' />
@@ -485,7 +467,9 @@ export const HomePage = () => {
           <section className='frame frame--8' data-frame-pos='8'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <div className='frame__step'>
                 <picture className='frame__picture'>
                   <img src={square} className='frame__image' />
@@ -537,39 +521,41 @@ export const HomePage = () => {
           <section className='frame frame--9' data-frame-pos='9'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              <div className='link-box'></div>
+              {/* <div className='link-box'></div> */}
+              <LinkBox type='outer' onOpen={handleIsOpen} />
+
               <div className='frame__socials'>
                 <div className='footer__image'>
                   <img src={shadow} />
                 </div>
                 <ul className='footer__links'>
                   <li>
-                    <a href='#' className='footer__link' target='_blank'>
+                    <a href='https://www.instagram.com/torisstudio' className='footer__link' target='_blank'>
                       <span className='icon icon--instagram'></span>
                     </a>
                   </li>
                   <li>
-                    <a href='#' className='footer__link' target='_blank'>
+                    <a href='https://www.facebook.com/people/Meditation-Cube/61577078050799/?mibextid=wwXIfr' className='footer__link' target='_blank'>
                       <span className='icon icon--facebook'></span>
                     </a>
                   </li>
                   <li>
-                    <a href='#' className='footer__link' target='_blank'>
+                    <a href='https://youtu.be/_Vp4-CmUYrE' className='footer__link' target='_blank'>
                       <span className='icon icon--youtube'></span>
                     </a>
                   </li>
                   <li>
-                    <a href='#' className='footer__link' target='_blank'>
+                    <a href='https://www.linkedin.com/in/oleksandra-tsymbaliuk-a970ba49/' className='footer__link' target='_blank'>
                       <span className='icon icon--linkedin'></span>
                     </a>
                   </li>
                   <li>
-                    <a href='#' className='footer__link' target='_blank'>
-                      <span className='icon icon--telegram'></span>
+                    <a href='https://www.behance.net/torisstudio#' className='footer__link' target='_blank'>
+                      <span className='icon icon--behance'></span>
                     </a>
                   </li>
                   <li>
-                    <a href='#' className='footer__link' target='_blank'>
+                    <a href='https://ru.pinterest.com/torisstudio0078/' className='footer__link' target='_blank'>
                       <span className='icon icon--pinterest'></span>
                     </a>
                   </li>
