@@ -192,9 +192,11 @@
 .about-us-description {
   color: white;
 
-  padding-block: func.get-vw(100px);
+  padding-top: func.get-vw(100px);
+  padding-bottom: func.get-vw(300px);
   @include func.mobile {
-    padding-block: 60px;
+    padding-top: 60px;
+    padding-bottom: 180px;
   }
 
   & .container {
@@ -238,12 +240,39 @@
 
 
   & .about-us__typography {
+    position: relative;
+    overflow: visible;
+
     grid-column: 3 / -1;
     @include func.mobile {
       grid-column: 1 / -1;
 
       text-align: center;
     }
+
+    &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: func.get-vw(16px);
+
+    width: func.get-vw(222px);
+    height: func.get-vw(188px);
+    background-image: url('../assets/image/logoPJATKsingle.png');
+    background-repeat: no-repeat;
+    background-size: func.get-vw(222px) func.get-vw(188px);
+    background-position: center;
+
+    @include func.mobile {
+      top: calc(100% + 16px);
+      right: 50%;
+      transform: translateX(50%);
+
+      width: 100px;
+      height: 85px;
+      background-size: 100px 85px;
+    }
+  }
 
     & p {
       margin-bottom: func.get-vw(24px);

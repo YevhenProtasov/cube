@@ -27,7 +27,6 @@ export const HomePage = () => {
   const [openHidden, setOpenHidden] = useState<boolean>(false);
 
   const handleIsOpen = useCallback(() => {
-    // setOpen(prev => !prev);
     setOpenHidden(prev => !prev);
   }, []);
 
@@ -62,9 +61,7 @@ export const HomePage = () => {
     }
 
     const box = document.querySelector('#custom-particles');
-    console.log('box before');
     if (!box) return;
-    console.log('box after');
     box.classList.add('animate');
 
     setTimeout(function() {
@@ -91,6 +88,24 @@ export const HomePage = () => {
         onComplete: () => {
           // aboutModal?.classList.add('active');
           // handleIsOpen();
+
+        if (window.location.hash === '#about-project') {
+          window.location.hash = '';
+        } else {
+          window.location.hash = '#about-project';
+        }
+        const targetElement = document.getElementById('about-project');
+
+        if (window.location.hash === '#about-project' && targetElement) {
+          targetElement.style.visibility = 'visible';
+          targetElement.style.opacity = '1';
+          targetElement.style.pointerEvents = 'all';
+          targetElement.style.maxHeight = '100vh';
+          targetElement.style.overflowY = 'auto';
+        } else {
+          targetElement?.removeAttribute('style');
+        } 
+
           setOpen(prev => !prev);
           gsap.to('.pixel-grid__block', {
             opacity: 0,
@@ -132,6 +147,17 @@ export const HomePage = () => {
       });
     });
     // #endregion details modal
+
+    const targetElement = document.getElementById('about-project');
+    if (window.location.hash === '#about-project' && targetElement) {
+      targetElement.style.visibility = 'visible';
+      targetElement.style.opacity = '1';
+      targetElement.style.pointerEvents = 'all';
+      targetElement.style.maxHeight = '100vh';
+      targetElement.style.overflowY = 'auto';
+    } else {
+      targetElement?.removeAttribute('style');
+    } 
   }, []);
 
   return (
@@ -151,8 +177,10 @@ export const HomePage = () => {
                 <img src={heroLogo} className='frame__image' />
               </picture>
               <div className='frame__typography'>
-                <h1 className='frame__title'>The Cube</h1>
-                <p className='frame__subtitle'>Discover</p>
+                {/* <h1 className='frame__title'>The Cube</h1> */}
+                <h1 className='frame__title'>Kostka Medytacyjna</h1>
+                {/* <p className='frame__subtitle'>Discover</p> */}
+                <p className='frame__subtitle'>Odkryj</p>
               </div>
 
               <div className='frame__pagination'>
@@ -183,7 +211,8 @@ export const HomePage = () => {
                 <img src={line} className='frame__image' />
               </picture>
               <div className='frame__typography'>
-                <p className='frame__text'>Interact with the Cube to explore the foundations of meditation. Each face of the Cube represents a different aspect of the practice</p>
+                {/* <p className='frame__text'>Interact with the Cube to explore the foundations of meditation. Each face of the Cube represents a different aspect of the practice</p> */}
+                <p className='frame__text'>Dotknij Kostki, by odkryć fundamenty medytacji. Każda z jej ścian ukazuje inny wymiar praktyki.</p>
               </div>
             </div>
 
@@ -215,9 +244,11 @@ export const HomePage = () => {
                   <img src={square} className='frame__image' />
                 </picture>
                 <div className='frame__typography'>
-                  <h2 className='frame__step-title'>Position</h2>
+                  {/* <h2 className='frame__step-title'>Position</h2> */}
+                  <h2 className='frame__step-title'>Pozycja</h2>
                   <div className='frame__show-more'>
-                    <span className='frame__show-more-label'>Face 1</span>
+                    {/* <span className='frame__show-more-label'>Face 1</span> */}
+                    <span className='frame__show-more-label'>Ściana 1</span>
                     <span className='frame__icon'>
                       <svg className='scg svg--eye-closed' width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -231,7 +262,8 @@ export const HomePage = () => {
                       </svg>
                     </span>
                   </div>
-                  <p className='frame__step-text'>Sit up straight, feel the stability</p>
+                  {/* <p className='frame__step-text'>Sit up straight, feel the stability</p> */}
+                  <p className='frame__step-text'>Siedź prosto, poczuj stabilność</p>
                 </div>
               </div>
             </div>
@@ -268,9 +300,11 @@ export const HomePage = () => {
                   <img src={square} className='frame__image' />
                 </picture>
                 <div className='frame__typography'>
-                  <h2 className='frame__step-title'>Eyes</h2>
+                  {/* <h2 className='frame__step-title'>Eyes</h2> */}
+                  <h2 className='frame__step-title'>Oczy</h2>
                   <div className='frame__show-more'>
-                    <span className='frame__show-more-label'>Face 2</span>
+                    {/* <span className='frame__show-more-label'>Face 2</span> */}
+                    <span className='frame__show-more-label'>Ściana 2</span>
                     <span className='frame__icon'>
                       <svg className='scg svg--eye-closed' width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -284,7 +318,8 @@ export const HomePage = () => {
                       </svg>
                     </span>
                   </div>
-                  <p className='frame__step-text'>Keep your eyes open, gaze downward</p>
+                  {/* <p className='frame__step-text'>Keep your eyes open, gaze downward</p> */}
+                  <p className='frame__step-text'>Patrz w dół, nie zamykaj oczu</p>
                 </div>
               </div>
             </div>
@@ -321,9 +356,11 @@ export const HomePage = () => {
                   <img src={square} className='frame__image' />
                 </picture>
                 <div className='frame__typography'>
-                  <h2 className='frame__step-title'>Breathing</h2>
+                  {/* <h2 className='frame__step-title'>Breathing</h2> */}
+                  <h2 className='frame__step-title'>Oddech</h2>
                   <div className='frame__show-more'>
-                    <span className='frame__show-more-label'>Face 3</span>
+                    {/* <span className='frame__show-more-label'>Face 3</span> */}
+                    <span className='frame__show-more-label'>Ściana 3</span>
                     <span className='frame__icon'>
                       <svg className='scg svg--eye-closed' width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -337,7 +374,8 @@ export const HomePage = () => {
                       </svg>
                     </span>
                   </div>
-                  <p className='frame__step-text'>Follow your breath, stay in the present</p>
+                  {/* <p className='frame__step-text'>Follow your breath, stay in the present</p> */}
+                  <p className='frame__step-text'>Podążaj za oddechem, bądź obecny</p>
                 </div>
               </div>
             </div>
@@ -374,9 +412,11 @@ export const HomePage = () => {
                   <img src={square} className='frame__image' />
                 </picture>
                 <div className='frame__typography'>
-                  <h2 className='frame__step-title'>Mind</h2>
+                  {/* <h2 className='frame__step-title'>Mind</h2> */}
+                  <h2 className='frame__step-title'>Umysł</h2>
                   <div className='frame__show-more'>
-                    <span className='frame__show-more-label'>Face 4</span>
+                    {/* <span className='frame__show-more-label'>Face 4</span> */}
+                    <span className='frame__show-more-label'>Ściana 4</span>
                     <span className='frame__icon'>
                       <svg className='scg svg--eye-closed' width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -390,7 +430,8 @@ export const HomePage = () => {
                       </svg>
                     </span>
                   </div>
-                  <p className='frame__step-text'>Observe your thoughts, return to the breath</p>
+                  {/* <p className='frame__step-text'>Observe your thoughts, return to the breath</p> */}
+                  <p className='frame__step-text'>Obserwuj swoje myśli, wracaj do oddechu</p>
                 </div>
               </div>
             </div>
@@ -427,9 +468,11 @@ export const HomePage = () => {
                   <img src={square} className='frame__image' />
                 </picture>
                 <div className='frame__typography'>
-                  <h2 className='frame__step-title'>Time</h2>
+                  {/* <h2 className='frame__step-title'>Time</h2> */}
+                  <h2 className='frame__step-title'>Czas</h2>
                   <div className='frame__show-more'>
-                    <span className='frame__show-more-label'>Face 5</span>
+                    {/* <span className='frame__show-more-label'>Face 5</span> */}
+                    <span className='frame__show-more-label'>Ściana 5</span>
                     <span className='frame__icon'>
                       <svg className='scg svg--eye-closed' width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -443,7 +486,8 @@ export const HomePage = () => {
                       </svg>
                     </span>
                   </div>
-                  <p className='frame__step-text'>Start with 5 minutes, focus on the moment</p>
+                  {/* <p className='frame__step-text'>Start with 5 minutes, focus on the moment</p> */}
+                  <p className='frame__step-text'>Zacznij od 5 minut, skup się na chwili obecnej</p>
                 </div>
               </div>
             </div>
@@ -480,9 +524,11 @@ export const HomePage = () => {
                   <img src={square} className='frame__image' />
                 </picture>
                 <div className='frame__typography'>
-                  <h2 className='frame__step-title'>End</h2>
+                  {/* <h2 className='frame__step-title'>End</h2> */}
+                  <h2 className='frame__step-title'>Zakończenie</h2>
                   <div className='frame__show-more'>
-                    <span className='frame__show-more-label'>Face 6</span>
+                    {/* <span className='frame__show-more-label'>Face 6</span> */}
+                    <span className='frame__show-more-label'>Ściana 6</span>
                     <span className='frame__icon'>
                       <svg className='scg svg--eye-closed' width='80' height='80' viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
@@ -496,7 +542,8 @@ export const HomePage = () => {
                       </svg>
                     </span>
                   </div>
-                  <p className='frame__step-text'>Slowly return to your daily life</p>
+                  {/* <p className='frame__step-text'>Slowly return to your daily life</p> */}
+                  <p className='frame__step-text'>Powoli wróć do codziennego życia</p>
                 </div>
               </div>
             </div>

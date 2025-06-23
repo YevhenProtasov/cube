@@ -83,14 +83,14 @@ const options: ISourceOptions = useMemo(
           density: {
             enable: true,
           },
-          value: 100,
+          value: 150,
         },
-        opacity: {
-          value: {
-            min: 0.4,
-            max: 1,
-          },
-        },
+        // opacity: {
+        //   value: {
+        //     min: 0.6,
+        //     max: 1,
+        //   },
+        // },
         shape: {
           type: 'image',
           options: {

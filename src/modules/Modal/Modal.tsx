@@ -67,7 +67,7 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
 
     // Reveal text on scroll
     const textToReveal = document.querySelectorAll('.about-us__text');
-    const aboutUs = document.querySelector('#modal--about');
+    const aboutUs = document.querySelector('#about-project');
 
     textToReveal.forEach((word, index) => {
       // const activeColor = '#ffffff';
@@ -92,7 +92,7 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   return (
-    <div id='modal--about' className={`modal modal--about ${isOpen ? 'active' : ''}`}>
+    <div id='about-project' className={`modal modal--about ${isOpen ? 'active' : ''}`}>
       <LinkBox type='inner' style="light" onOpen={onClose} />
 
       <section className='about-us'>
@@ -136,7 +136,7 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
             </ul>
 
             <div className='about-us__typography'>
-              <h1 className='about-us__title'>
+              {/* <h1 className='about-us__title'>
                 A Journey of Creativity <br /> and Mindfulness
               </h1>
               <p className='about-us__text'>
@@ -154,9 +154,17 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 meditation, discovering its power to ground and calm the mind.
                 Combining my artistic background with my newfound love for
                 mindfulness, the idea for the Meditation Cube was born.
+              </p> */}
+              <h1 className='about-us__title'>
+                Podróż przez <br /> kreatywność i uważność
+              </h1>
+              <p className='about-us__text'>
+                Kostka Medytacyjna to coś więcej niż tylko obiekt — to ukoronowanie mojej osobistej i artystycznej podróży. Urodziłam się w Ukrainie i od zawsze fascynowało mnie połączenie sztuki, technologii i ludzkich emocji. Studia na Charkowskiej Państwowej Akademii Sztuki i Designu dały mi solidne podstawy w dziedzinie opowiadania wizualnych historii, a praca jako projektantka graficzna pozwoliła mi udoskonalić warsztat.
+                <br />
+                Kiedy wojna zmusiła mnie do opuszczenia Charkowa i rozpoczęcia życia od nowa w Warszawie, szukałam sposobu na wyrażenie emocji i odnalezienie równowagi w chaosie. W tym czasie zaczęłam praktykować medytację, odkrywając jej moc w przywracaniu spokoju i zakorzenienia. Łącząc swoje artystyczne doświadczenie z nowo odkrytą pasją do uważności, zrodził się pomysł na Kostkę Medytacyjną.
               </p>
 
-              <p className='about-us__text'>
+              {/* <p className='about-us__text'>
                 <span className='about-us__title'>
                   The Birth <br />
                   of the Cube
@@ -175,9 +183,17 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 experience. Using Arduino and other digital tools, I
                 programmed the Cube to react to breathing patterns, guiding
                 users to focus on breath and align with the present moment.
+              </p> */}
+              <p className='about-us__text'>
+                <span className='about-us__title'>
+                  Narodziny <br /> Kostki
+                </span>
+                Kostka Medytacyjna powstała jako fizyczna i konceptualna przestrzeń do introspekcji i spokoju. Jej minimalistyczny design odzwierciedla prostotę uważności, a struktura symbolizuje równowagę i stabilność. Chciałam stworzyć coś namacalnego, co mogłoby prowadzić ludzi przez praktykę medytacji, oferując im spokojną przystań w zabieganym życiu.
+                <br />
+                Aby urzeczywistnić tę wizję, wykorzystałam swoje umiejętności z zakresu animacji, designu i instalacji światłowodowych. Kostka nie tylko przyciąga wzrok, ale jest także interaktywna — łączy światło, fakturę i ruch, tworząc wciągające doświadczenie. Używając Arduino i innych narzędzi cyfrowych, zaprogramowałam Kostkę tak, by reagowała na rytm oddechu użytkownika, pomagając skupić się na oddechu i zanurzyć się w chwili obecnej.
               </p>
 
-              <p className='about-us__text'>
+              {/* <p className='about-us__text'>
                 <span className='about-us__title'>
                   The Purpose <br /> of the Meditation Cube
                 </span>
@@ -194,9 +210,17 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 quiet corner of someone’s home, the Meditation Cube invites
                 reflection and offers a moment of pause in our hectic modern
                 lives.
+              </p> */}
+              <p className='about-us__text'>
+                <span className='about-us__title'>
+                  Cel Kostki Medytacyjnej
+                </span>
+                W swojej istocie Kostka Medytacyjna to narzędzie uważności. Została zaprojektowana tak, aby pomagać każdemu — niezależnie od doświadczenia z medytacją — w nawiązywaniu kontaktu z wewnętrznym spokojem. Każda ściana Kostki reprezentuje kluczowy aspekt medytacji: pozycję, oddech, skupienie i czas. Poprzez interakcję z Kostką użytkownicy przechodzą krok po kroku w stronę wyciszenia.
+                <br />
+                Poza praktycznym zastosowaniem, Kostka jest również dziełem sztuki. To wyraz odporności, kreatywności i uniwersalnej potrzeby pokoju. Niezależnie od tego, czy znajduje się w galerii, czy w zacisznym kącie czyjegoś domu — Kostka Medytacyjna zaprasza do refleksji i oferuje chwilę wytchnienia w naszym zabieganym, nowoczesnym świecie.
               </p>
 
-              <p className='about-us__text'>
+              {/* <p className='about-us__text'>
                 <span className='about-us__title'>
                   A Vision <br />
                   for the Future
@@ -212,6 +236,14 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 journey. I invite you to experience the Cube, let it guide
                 you, and discover the calm within. Together, we can create
                 moments of peace in a world that often feels overwhelming.
+              </p> */}
+              <p className='about-us__text'>
+                <span className='about-us__title'>
+                  Wizja na przyszłość
+                </span>
+                Kostka Medytacyjna to dopiero początek mojej podróży w świecie interaktywnej sztuki i uważności. Traktuję ją jako część większej wizji tworzenia przestrzeni — zarówno fizycznych, jak i wirtualnych — które inspirują do samopoznania i dobrostanu. Kontynuując rozwój tego projektu, mam nadzieję dotrzeć do jeszcze większej liczby osób, łącząc technologię, design i medytację w nowatorski sposób.
+                <br />
+                Ten projekt nie dotyczy tylko mnie — dotyczy także ciebie i twojej drogi. Zapraszam cię do doświadczenia Kostki, pozwól jej poprowadzić się i odkryć spokój, który jest w tobie. Razem możemy tworzyć chwile pokoju w świecie, który często przytłacza.
               </p>
             </div>
           </div>

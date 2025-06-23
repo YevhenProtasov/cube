@@ -47,7 +47,9 @@
   }
 
   &__info {
-    aspect-ratio: 1.15;
+    // aspect-ratio: 1.15;
+    width: func.get-vw(927px);
+    min-height: func.get-vw(806px);
     position: relative;
     overflow: hidden;
 
@@ -58,7 +60,9 @@
     padding-inline: func.get-vw(70px);
     padding-bottom: func.get-vw(84px);
     @include func.mobile {
-      aspect-ratio: unset;
+      // aspect-ratio: unset;
+      width: unset;
+      height: unset;
       padding-top: func.get-vw(48px,375);
       padding-inline: func.get-vw(54px,375) func.get-vw(26px,375);
       padding-bottom: func.get-vw(48px,375);
