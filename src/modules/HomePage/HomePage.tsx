@@ -1,6 +1,4 @@
 import { gsap } from 'gsap';
-// import reactLogo from '../../assets/react.svg';
-// import viteLogo from '/vite.svg';
 import heroLogo from '../../assets/image/logo_mirror--large.png';
 import line from '../../assets/image/line-j.png';
 import square from '../../assets/image/square.png';
@@ -16,8 +14,7 @@ import { PositionStep } from '../PositionStep';
 import { BreathingStep } from '../BreathingStep';
 import { LinkBox } from './components/LinkBox';
 import { PixelGridTransition } from '../PixelGridTransition';
-// import { StepSection } from './components/StepSection';
-// import { Header } from '../../shared/components/Header';
+import { ParticlesEffects } from '../ParticlesEffects';
 
 enum Direction {
   Next = 'next',
@@ -36,6 +33,7 @@ export const HomePage = () => {
 
   function paginate(direction: Direction) {
     const frames = document.querySelectorAll('.frame');
+    const footerDesc = document.querySelector('.footer-description');
 
     if (direction === Direction.Next) {
       frames.forEach((frame) => {
@@ -43,6 +41,11 @@ export const HomePage = () => {
         const newPos = Number(currPos) - 1;
         frame.setAttribute('data-frame-pos', String(newPos));
       });
+      if (footerDesc) {
+        const currValue = footerDesc.getAttribute('data-footer-desc');
+        const newValue = Number(currValue) + 1;
+        footerDesc.setAttribute('data-footer-desc', String(newValue));
+      }
     }
 
     if (direction === Direction.Prev) {
@@ -51,7 +54,22 @@ export const HomePage = () => {
         const newPos = Number(currPos) + 1;
         frame.setAttribute('data-frame-pos', String(newPos));
       });
+      if (footerDesc) {
+        const currValue = footerDesc.getAttribute('data-footer-desc');
+        const newValue = Number(currValue) - 1;
+        footerDesc.setAttribute('data-footer-desc', String(newValue));
+      }
     }
+
+    const box = document.querySelector('#custom-particles');
+    console.log('box before');
+    if (!box) return;
+    console.log('box after');
+    box.classList.add('animate');
+
+    setTimeout(function() {
+      box.classList.remove('animate');
+    }, 1000);
   }
 
   useEffect(() => {
@@ -119,21 +137,15 @@ export const HomePage = () => {
   return (
     <>
       <PixelGridTransition />
-      {/* <Header
-        linkTo='/about-us'
-        title='About the Project: The Meditation Cube'
-      /> */}
 
       <main className='main'>
         <div className='wrapper'>
           <Modal isOpen={open} onClose={handleIsOpen} />
+          <ParticlesEffects idFor='custom-particles'/>
 
           <section className='frame frame--1' data-frame-pos='1'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'>
-                <span className='link-box__title'>About the Project: The Meditation Cube</span>
-              </div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
               <picture className='frame__picture'>
                 <img src={heroLogo} className='frame__image' />
@@ -165,7 +177,6 @@ export const HomePage = () => {
           <section className='frame frame--2' data-frame-pos='2'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <picture className='frame__picture'>
@@ -197,7 +208,6 @@ export const HomePage = () => {
           <section className='frame frame--3' data-frame-pos='3'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <div className='frame__step'>
@@ -251,7 +261,6 @@ export const HomePage = () => {
           <section className='frame frame--4' data-frame-pos='4'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <div className='frame__step'>
@@ -305,7 +314,6 @@ export const HomePage = () => {
           <section className='frame frame--5' data-frame-pos='5'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <div className='frame__step'>
@@ -359,7 +367,6 @@ export const HomePage = () => {
           <section className='frame frame--6' data-frame-pos='6'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <div className='frame__step'>
@@ -413,7 +420,6 @@ export const HomePage = () => {
           <section className='frame frame--7' data-frame-pos='7'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <div className='frame__step'>
@@ -467,7 +473,6 @@ export const HomePage = () => {
           <section className='frame frame--8' data-frame-pos='8'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <div className='frame__step'>
@@ -521,7 +526,6 @@ export const HomePage = () => {
           <section className='frame frame--9' data-frame-pos='9'>
             <div className='noise'></div>
             <div className='frame__wrapper'>
-              {/* <div className='link-box'></div> */}
               <LinkBox type='outer' onOpen={handleIsOpen} />
 
               <div className='frame__socials'>
@@ -573,226 +577,28 @@ export const HomePage = () => {
               </button>
             </div>
           </section>
+
+          <div className='footer-description' data-footer-desc='1'>
+            <h4 className='footer-description__title'>Praca dyplomowa</h4>
+            <p><b>Projekt "Kostka medytacyjna"</b> powstał na potrzeby obrony magisterskiej pracy dyplomowej na Wydziale Sztuki Nowych Mediów Polsko-Japońskiej Akademii Technik Komputerowych w Warszawie.</p>
+            <ul className='footer-description__list'>
+              <li className='footer-description-item'>
+                Autor pracy - <b>Oleksandra Tsymbaliuk</b>
+                </li>
+              <li className='footer-description-item'>
+                Promotor główny - <b>dr Anna Barilik</b>
+                </li>
+              <li className='footer-description-item'>
+                Promotor techniczny - <b>mgr inż. Marcin Wichrowski</b>
+              </li>
+              <li className='footer-description-item'>
+                Promotor pracy teoretycznej - <b>mgr Agata Myjak</b>
+              </li>
+            </ul>
+            <h4 className='footer-description__title'>PJATK 2025</h4>
+          </div>
+
         </div>
-
-        {/* <div className='screen screen--1'>
-          <section className='frame frame--1'>
-            <div className='frame__wrapper'>
-              <picture className='frame__picture'>
-                <img src={heroLogo}  className='frame__image' />
-              </picture>
-              <div className='frame__typography'>
-                <h1 className='frame__title'>The Cube</h1>
-                <p className='frame__subtitle'>Discover</p>
-              </div>
-            </div>
-            <div className='frame__pagination'>
-              <button type='button' className='frame__pagination-next'>
-                <span className='frame__pagination-arrow'>
-                  <svg viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM49.7071 8.7071C50.0976 8.31658 50.0976 7.68341 49.7071 7.29289L43.3431 0.928928C42.9526 0.538404 42.3195 0.538404 41.9289 0.928929C41.5384 1.31945 41.5384 1.95262 41.9289 2.34314L47.5858 8L41.9289 13.6569C41.5384 14.0474 41.5384 14.6805 41.9289 15.0711C42.3195 15.4616 42.9526 15.4616 43.3431 15.0711L49.7071 8.7071ZM1 8L1 9L49 9L49 8L49 7L1 7L1 8Z" fill="white"/>
-                  </svg>
-                </span>
-              </button>
-              <button type='button' className='frame__pagination-prev'>
-                <span className='frame__pagination-arrow'>
-                  <svg viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM49.7071 8.7071C50.0976 8.31658 50.0976 7.68341 49.7071 7.29289L43.3431 0.928928C42.9526 0.538404 42.3195 0.538404 41.9289 0.928929C41.5384 1.31945 41.5384 1.95262 41.9289 2.34314L47.5858 8L41.9289 13.6569C41.5384 14.0474 41.5384 14.6805 41.9289 15.0711C42.3195 15.4616 42.9526 15.4616 43.3431 15.0711L49.7071 8.7071ZM1 8L1 9L49 9L49 8L49 7L1 7L1 8Z" fill="white"/>
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </section>
-
-          <div className='screen screen--2'>
-            <section className='frame frame--2'>
-                <div className='frame__wrapper'>
-                  <picture className='frame__picture'>
-                    <img src={heroLogo}  className='frame__image' />
-                  </picture>
-                  <div className='frame__typography'>
-                    <h1 className='frame__title'>The Cube</h1>
-                    <p className='frame__subtitle'>Discover</p>
-                  </div>
-                </div>
-              <div className='frame__pagination'>
-                <button type='button' className='frame__pagination-next'>
-                  <span className='frame__pagination-arrow'>
-                    <svg viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM49.7071 8.7071C50.0976 8.31658 50.0976 7.68341 49.7071 7.29289L43.3431 0.928928C42.9526 0.538404 42.3195 0.538404 41.9289 0.928929C41.5384 1.31945 41.5384 1.95262 41.9289 2.34314L47.5858 8L41.9289 13.6569C41.5384 14.0474 41.5384 14.6805 41.9289 15.0711C42.3195 15.4616 42.9526 15.4616 43.3431 15.0711L49.7071 8.7071ZM1 8L1 9L49 9L49 8L49 7L1 7L1 8Z" fill="white"/>
-                    </svg>
-                  </span>
-                </button>
-                <button type='button' className='frame__pagination-prev'>
-                  <span className='frame__pagination-arrow'>
-                    <svg viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM49.7071 8.7071C50.0976 8.31658 50.0976 7.68341 49.7071 7.29289L43.3431 0.928928C42.9526 0.538404 42.3195 0.538404 41.9289 0.928929C41.5384 1.31945 41.5384 1.95262 41.9289 2.34314L47.5858 8L41.9289 13.6569C41.5384 14.0474 41.5384 14.6805 41.9289 15.0711C42.3195 15.4616 42.9526 15.4616 43.3431 15.0711L49.7071 8.7071ZM1 8L1 9L49 9L49 8L49 7L1 7L1 8Z" fill="white"/>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-            </section>
-
-            <section className='frame frame--3'>
-                <div className='frame__wrapper'>
-                  <picture className='frame__picture'>
-                    <img src={heroLogo}  className='frame__image' />
-                  </picture>
-                  <div className='frame__typography'>
-                    <h1 className='frame__title'>The Cube</h1>
-                    <p className='frame__subtitle'>Discover</p>
-                  </div>
-                </div>
-              <div className='frame__pagination'>
-                <button type='button' className='frame__pagination-next'>
-                  <span className='frame__pagination-arrow'>
-                    <svg viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM49.7071 8.7071C50.0976 8.31658 50.0976 7.68341 49.7071 7.29289L43.3431 0.928928C42.9526 0.538404 42.3195 0.538404 41.9289 0.928929C41.5384 1.31945 41.5384 1.95262 41.9289 2.34314L47.5858 8L41.9289 13.6569C41.5384 14.0474 41.5384 14.6805 41.9289 15.0711C42.3195 15.4616 42.9526 15.4616 43.3431 15.0711L49.7071 8.7071ZM1 8L1 9L49 9L49 8L49 7L1 7L1 8Z" fill="white"/>
-                    </svg>
-                  </span>
-                </button>
-                <button type='button' className='frame__pagination-prev'>
-                  <span className='frame__pagination-arrow'>
-                    <svg viewBox="0 0 50 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M1 7C0.447715 7 -4.82823e-08 7.44772 0 8C4.82823e-08 8.55228 0.447715 9 1 9L1 7ZM49.7071 8.7071C50.0976 8.31658 50.0976 7.68341 49.7071 7.29289L43.3431 0.928928C42.9526 0.538404 42.3195 0.538404 41.9289 0.928929C41.5384 1.31945 41.5384 1.95262 41.9289 2.34314L47.5858 8L41.9289 13.6569C41.5384 14.0474 41.5384 14.6805 41.9289 15.0711C42.3195 15.4616 42.9526 15.4616 43.3431 15.0711L49.7071 8.7071ZM1 8L1 9L49 9L49 8L49 7L1 7L1 8Z" fill="white"/>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-            </section>
-          </div>
-        </div> */}
-
-        {/* <section className='hero'>
-            <div className='container'>
-              <div className='hero__wrapper'>
-                <picture className='hero__image'>
-                  <img src={heroLogo} />
-                </picture>
-                <div className='hero__typography'>
-                  <h1 className='hero__title'>The Cube</h1>
-                  <p className='hero__subtitle'>Discover</p>
-                </div>
-              </div>
-            </div>
-          </section> */}
-
-        {/* <section className='about'>
-          <div className='container'>
-            <div className='about__wrapper'>
-              <div className='about__line'>
-                <img src={line} />
-              </div>
-              <div className='about__typography'>
-                <p>
-                  Interact with the Cube to explore the foundations of
-                  meditation. Each face of the Cube represents a different
-                  aspect of the practice
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className='steps'>
-          <StepSection
-            imgUrl={square}
-            title='Position'
-            subtitle='Face 1'
-            description='Sit up straight, feel the stability'
-            linkTo='/position'
-          />
-
-          <StepSection
-            imgUrl={square}
-            title='Eyes'
-            subtitle='Face 2'
-            description='Keep your eyes open, gaze downward'
-            linkTo='/eyes'
-          />
-
-          <StepSection
-            imgUrl={square}
-            title='Breathing'
-            subtitle='Face 3'
-            description='Follow your breath, stay in the present'
-            linkTo='/breathing'
-          />
-
-          <StepSection
-            imgUrl={square}
-            title='Mind'
-            subtitle='Face 4'
-            description='Observe your thoughts, return to the breath'
-            linkTo='/mind'
-          />
-
-          <StepSection
-            imgUrl={square}
-            title='Time'
-            subtitle='Face 5'
-            description='Start with 5 minutes, focus on the moment'
-            linkTo='/time'
-          />
-
-          <StepSection
-            imgUrl={square}
-            title='End'
-            subtitle='Face 6'
-            description='Slowly return to your daily life'
-            linkTo='/end'
-          />
-        </section>
-
-        <footer className='footer'>
-          <div className='container'>
-            <div className='footer__wrapper'>
-              <div className='footer__image'>
-                <img src={shadow} />
-              </div>
-              <ul className='footer__links'>
-                <li>
-                  <a href='#' className='footer__link' target='_blank'>
-                    <span className='icon icon--instagram'></span>
-                  </a>
-                </li>
-                <li>
-                  <a href='#' className='footer__link' target='_blank'>
-                    <span className='icon icon--facebook'></span>
-                  </a>
-                </li>
-                <li>
-                  <a href='#' className='footer__link' target='_blank'>
-                    <span className='icon icon--youtube'></span>
-                  </a>
-                </li>
-                <li>
-                  <a href='#' className='footer__link' target='_blank'>
-                    <span className='icon icon--linkedin'></span>
-                  </a>
-                </li>
-                <li>
-                  <a href='#' className='footer__link' target='_blank'>
-                    <span className='icon icon--telegram'></span>
-                  </a>
-                </li>
-                <li>
-                  <a href='#' className='footer__link' target='_blank'>
-                    <span className='icon icon--pinterest'></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </footer> */}
-        {/* <div>
-          <a href='https://vite.dev' target='_blank'>
-            <img src={viteLogo} className='logo' alt='Vite logo' />
-          </a>
-          <a href='https://react.dev' target='_blank'>
-            <img src={reactLogo} className='logo react' alt='React logo' />
-          </a>
-        </div> */}
       </main>
     </>
   );

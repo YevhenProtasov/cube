@@ -7,12 +7,21 @@
   padding-block: func.get-vw(118px);
   background-color: var(--c-primary);
 
+  & .container {
+    @include func.mobile {
+      padding: 0 32px;
+    }
+  }
+
   &__wrapper {
     display: grid;
     // align-items: center;
     grid-template-columns: repeat(4, 1fr);
     gap: func.get-vw(18px);
 
+    @include func.mobile {
+      gap: 6px;
+    }
     // @include on-tablet {
     //   grid-template-columns: repeat(8, 1fr);
     //   gap: 18px;
@@ -32,6 +41,9 @@
     justify-content: flex-end;
     height: fit-content;
 
+    @include func.mobile {
+      display: none;
+    }
     // grid-row: 3;
 
     // @include on-tablet {
@@ -71,6 +83,9 @@
     gap: func.get-vw(19px);
 
     height: fit-content;
+    @include func.mobile {
+      display: none;
+    }
   }
 
   &__link {
@@ -100,7 +115,10 @@
 
     overflow-y: auto;
     scrollbar-width: none;
-
+    @include func.mobile {
+      padding-top: 100px;
+      grid-column: 1 / -1;
+    }
     // &::-webkit-scrollbar {
     //   width: 0px;
     //   height: 0px;
@@ -124,6 +142,7 @@
   }
 
   &__title {
+    display: block;
     width: 100%;
 
     font-family: Jura;
@@ -131,12 +150,22 @@
     font-weight: 400;
     line-height: 1.2;
     margin-bottom: func.get-vw(36px);
+    @include func.mobile {
+      font-size: 38px;
+      margin-bottom: 40px;
+    }
   }
 
   &__text {
     font-size: func.get-vw(24px);
     font-weight: 400;
     line-height: 1.33;
+
+    margin-bottom: func.get-vw(300px);
+    @include func.mobile {
+      font-size: 16px;
+      margin-bottom: 100px;
+    }
   }
 }
 
@@ -145,6 +174,7 @@
 
   &__wrapper {
     width: 100vw;
+    max-width: 100%;
     aspect-ratio: 16 / 9;
     display: flex;
     justify-content: center;
@@ -157,6 +187,80 @@
   place-items: center;
   width: func.get-vw(150px);
   height: func.get-vw(70px);
+}
+
+.about-us-description {
+  color: white;
+
+  padding-block: func.get-vw(100px);
+  @include func.mobile {
+    padding-block: 60px;
+  }
+
+  & .container {
+    @include func.mobile {
+      padding: 0 32px;
+    }
+  }
+
+  & .about-us__graphic,
+  & .about-us__links {
+    display: none;
+    @include func.mobile {
+      position: relative;
+      grid-column: 2 span;
+      display: flex;
+      margin-bottom: 32px;
+    }
+  }
+  & .temp_shadow {
+    @include func.mobile {
+      margin-top: calc(0px - func.get-vw(12px, 375));
+      width: func.get-vw(91px, 375);
+      height: func.get-vw(280px, 375);
+    }
+  }
+
+  & .about-us__links {
+    @include func.mobile {
+      row-gap: func.get-vw(8px, 375);
+    }
+  }
+  & .about-us__link {
+    width: func.get-vw(38px, 375);
+    height: func.get-vw(38px, 375);
+
+    & .icon {
+      width: func.get-vw(16px, 375);
+      height: func.get-vw(16px, 375);
+    }
+  }
+
+
+  & .about-us__typography {
+    grid-column: 3 / -1;
+    @include func.mobile {
+      grid-column: 1 / -1;
+
+      text-align: center;
+    }
+
+    & p {
+      margin-bottom: func.get-vw(24px);
+      @include func.mobile {
+        font-size: 16px;
+        line-height: 1.4;
+        text-align: center;
+  
+        margin-bottom: 24px;
+      }
+    }
+    & ul {
+      @include func.mobile {
+        margin-bottom: 24px;
+      }
+    }
+  }
 }
 
 // Temporary

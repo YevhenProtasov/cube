@@ -17,7 +17,8 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
   gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
-    if (window.innerWidth < 1280 || !isOpen) {
+    // if (window.innerWidth < 1280 || !isOpen) {
+    if (!isOpen) {
       return;
     }
 
@@ -92,9 +93,6 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
 
   return (
     <div id='modal--about' className={`modal modal--about ${isOpen ? 'active' : ''}`}>
-      {/* <div className='link-box link-box--light'>
-        <span className="link-box__title link-box__title--light">The Meditation Cube</span>
-      </div> */}
       <LinkBox type='inner' style="light" onOpen={onClose} />
 
       <section className='about-us'>
@@ -136,6 +134,7 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 </a>
               </li>
             </ul>
+
             <div className='about-us__typography'>
               <h1 className='about-us__title'>
                 A Journey of Creativity <br /> and Mindfulness
@@ -156,17 +155,6 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 Combining my artistic background with my newfound love for
                 mindfulness, the idea for the Meditation Cube was born.
               </p>
-
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
 
               <p className='about-us__text'>
                 <span className='about-us__title'>
@@ -189,17 +177,6 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 users to focus on breath and align with the present moment.
               </p>
 
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-
               <p className='about-us__text'>
                 <span className='about-us__title'>
                   The Purpose <br /> of the Meditation Cube
@@ -219,20 +196,6 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 lives.
               </p>
 
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-
               <p className='about-us__text'>
                 <span className='about-us__title'>
                   A Vision <br />
@@ -250,24 +213,11 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 you, and discover the calm within. Together, we can create
                 moments of peace in a world that often feels overwhelming.
               </p>
-
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
             </div>
           </div>
         </div>
       </section>
+
       <section className='video'>
         {/* <div className='container'> */}
           <div className='video__wrapper'>
@@ -277,12 +227,71 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 width='100%'
                 height='100%'
               />
-            {/* <div className='play'>
-              <span className='icon icon--youtube'></span>
-              <p>coming soon</p>
-            </div> */}
           </div>
         {/* </div> */}
+      </section>
+
+      <section className='about-us-description'>
+        <div className='container'>
+          <div className='about-us__wrapper'>
+            <div className='about-us__graphic'>
+              <div className='temp_shadow'></div>
+              {/* <div className='about-us__line'></div> */}
+            </div>
+            <ul className='about-us__links'>
+              <li>
+                <a href='https://www.instagram.com/torisstudio' className='about-us__link' target='_blank'>
+                  <span className='icon icon--instagram'></span>
+                </a>
+              </li>
+              <li>
+                <a href='https://www.facebook.com/people/Meditation-Cube/61577078050799/?mibextid=wwXIfr' className='about-us__link' target='_blank'>
+                  <span className='icon icon--facebook'></span>
+                </a>
+              </li>
+              <li>
+                <a href='https://youtu.be/_Vp4-CmUYrE' className='about-us__link' target='_blank'>
+                  <span className='icon icon--youtube'></span>
+                </a>
+              </li>
+              <li>
+                <a href='https://www.linkedin.com/in/oleksandra-tsymbaliuk-a970ba49/' className='about-us__link' target='_blank'>
+                  <span className='icon icon--linkedin'></span>
+                </a>
+              </li>
+              <li>
+                <a href='https://www.behance.net/torisstudio#' className='about-us__link' target='_blank'>
+                  <span className='icon icon--behance'></span>
+                </a>
+              </li>
+              <li>
+                <a href='https://ru.pinterest.com/torisstudio0078/' className='about-us__link' target='_blank'>
+                  <span className='icon icon--pinterest'></span>
+                </a>
+              </li>
+            </ul>
+
+            <div className='about-us__typography'>
+              <h4 className='footer-description__title'>Praca dyplomowa</h4>
+              <p><b>Projekt "Kostka medytacyjna"</b> powstał na potrzeby obrony magisterskiej pracy dyplomowej na Wydziale Sztuki Nowych Mediów Polsko-Japońskiej Akademii Technik Komputerowych w Warszawie.</p>
+              <ul className='footer-description__list'>
+                <li className='footer-description-item'>
+                  Autor pracy - <b>Oleksandra Tsymbaliuk</b>
+                  </li>
+                <li className='footer-description-item'>
+                  Promotor główny - <b>dr Anna Barilik</b>
+                  </li>
+                <li className='footer-description-item'>
+                  Promotor techniczny - <b>mgr inż. Marcin Wichrowski</b>
+                </li>
+                <li className='footer-description-item'>
+                  Promotor pracy teoretycznej - <b>mgr Agata Myjak</b>
+                </li>
+              </ul>
+              <h4 className='footer-description__title'>PJATK 2025</h4>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
