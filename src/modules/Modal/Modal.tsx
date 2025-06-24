@@ -159,9 +159,10 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 Podróż przez <br /> kreatywność i uważność
               </h1>
               <p className='about-us__text'>
-                Kostka Medytacyjna to coś więcej niż tylko obiekt — to ukoronowanie mojej osobistej i artystycznej podróży. Urodziłam się w Ukrainie i od zawsze fascynowało mnie połączenie sztuki, technologii i ludzkich emocji. Studia na Charkowskiej Państwowej Akademii Sztuki i Designu dały mi solidne podstawy w dziedzinie opowiadania wizualnych historii, a praca jako projektantka graficzna pozwoliła mi udoskonalić warsztat.
+                Integralną częścią instalacji jest zaawansowany system oświetlenia, oparty na cyfrowej taśmie LED WS2812B, składającej się z 1240 indywidualnie adresowanych diod RGB. Sterowany za pomocą mikrokontrolera ESP32, system ten umożliwia dynamiczne animacje świetlne, które reagują na obecność użytkownika dzięki czujnikowi ruchu RCWL-0516. Wykorzystanie konwertera poziomów logicznych (układ 74AHCT125) gwarantuje stabilną transmisję sygnału.
                 <br />
-                Kiedy wojna zmusiła mnie do opuszczenia Charkowa i rozpoczęcia życia od nowa w Warszawie, szukałam sposobu na wyrażenie emocji i odnalezienie równowagi w chaosie. W tym czasie zaczęłam praktykować medytację, odkrywając jej moc w przywracaniu spokoju i zakorzenienia. Łącząc swoje artystyczne doświadczenie z nowo odkrytą pasją do uważności, zrodził się pomysł na Kostkę Medytacyjną.
+                <br />
+                Dzięki temu, gdy ruch użytkownika zostaje wykryty, instalacja generuje losowe, zmienne efekty świetlne - jako wizualną manifestację wzmożonej energii i dynamiki interakcji. Natomiast w momencie braku aktywności oświetlenie stopniowo wygasa, przechodząc do stanu czuwania, co podkreśla subtelny kontrast między ruchem a ciszą, między zgiełkiem a medytacyjnym wyciszeniem.
               </p>
 
               {/* <p className='about-us__text'>
@@ -190,6 +191,7 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 </span>
                 Kostka Medytacyjna powstała jako fizyczna i konceptualna przestrzeń do introspekcji i spokoju. Jej minimalistyczny design odzwierciedla prostotę uważności, a struktura symbolizuje równowagę i stabilność. Chciałam stworzyć coś namacalnego, co mogłoby prowadzić ludzi przez praktykę medytacji, oferując im spokojną przystań w zabieganym życiu.
                 <br />
+                <br />
                 Aby urzeczywistnić tę wizję, wykorzystałam swoje umiejętności z zakresu animacji, designu i instalacji światłowodowych. Kostka nie tylko przyciąga wzrok, ale jest także interaktywna — łączy światło, fakturę i ruch, tworząc wciągające doświadczenie. Używając Arduino i innych narzędzi cyfrowych, zaprogramowałam Kostkę tak, by reagowała na rytm oddechu użytkownika, pomagając skupić się na oddechu i zanurzyć się w chwili obecnej.
               </p>
 
@@ -217,6 +219,7 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                 </span>
                 W swojej istocie Kostka Medytacyjna to narzędzie uważności. Została zaprojektowana tak, aby pomagać każdemu — niezależnie od doświadczenia z medytacją — w nawiązywaniu kontaktu z wewnętrznym spokojem. Każda ściana Kostki reprezentuje kluczowy aspekt medytacji: pozycję, oddech, skupienie i czas. Poprzez interakcję z Kostką użytkownicy przechodzą krok po kroku w stronę wyciszenia.
                 <br />
+                <br />
                 Poza praktycznym zastosowaniem, Kostka jest również dziełem sztuki. To wyraz odporności, kreatywności i uniwersalnej potrzeby pokoju. Niezależnie od tego, czy znajduje się w galerii, czy w zacisznym kącie czyjegoś domu — Kostka Medytacyjna zaprasza do refleksji i oferuje chwilę wytchnienia w naszym zabieganym, nowoczesnym świecie.
               </p>
 
@@ -242,6 +245,7 @@ export const Modal:React.FC<Props> = ({ isOpen, onClose }) => {
                   Wizja na przyszłość
                 </span>
                 Kostka Medytacyjna to dopiero początek mojej podróży w świecie interaktywnej sztuki i uważności. Traktuję ją jako część większej wizji tworzenia przestrzeni — zarówno fizycznych, jak i wirtualnych — które inspirują do samopoznania i dobrostanu. Kontynuując rozwój tego projektu, mam nadzieję dotrzeć do jeszcze większej liczby osób, łącząc technologię, design i medytację w nowatorski sposób.
+                <br />
                 <br />
                 Ten projekt nie dotyczy tylko mnie — dotyczy także ciebie i twojej drogi. Zapraszam cię do doświadczenia Kostki, pozwól jej poprowadzić się i odkryć spokój, który jest w tobie. Razem możemy tworzyć chwile pokoju w świecie, który często przytłacza.
               </p>

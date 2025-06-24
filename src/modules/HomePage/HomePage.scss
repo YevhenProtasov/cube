@@ -625,6 +625,7 @@
 .frame--8,
 .frame--9 {
   & .frame__show-more {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -632,9 +633,33 @@
     width: fit-content;
     margin-left: auto;
     padding-top: func.get-vw(20px);
+    &::after {
+      content:'Zobacz więcej';
+      opacity: 0;
+
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      padding-top: func.get-vw(8px);
+
+      font-family: Inter;
+      color: var(--c-primary);
+      line-height: 1;
+      font-weight: 400;
+      font-size: func.get-vw(24px);
+      white-space: nowrap;
+
+      transition: all 0.3s ease;
+    }
+
     @media (hover:hover) {
       &:hover {
         cursor: pointer;
+        &::after {
+          opacity: 1;
+        }
 
         & .frame__icon {
           .svg {
@@ -651,6 +676,10 @@
     }
     @include func.mobile {
       row-gap: func.get-vw(16px,375);
+        &::after {
+          opacity: 1;
+          font-size: 8px;
+        }
         & .frame__icon {
           .svg--eye-closed {
             opacity: 0;
